@@ -3,6 +3,6 @@
 
 <template>
   <main>
-    <div>home page</div>
+    <div></div>
   </main>
 </template>

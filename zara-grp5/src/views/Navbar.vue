@@ -1,8 +1,13 @@
 
 <template>
-    <header>
-      <div id="headerContents">
-        <div id="headerLeft">
+    <header style="
+          width: '100%';
+          padding: '12px 24px 20px 24px';
+          position: 'fixed';
+          margin: '0px';"
+        >
+      <div id="headerContents" >
+        <div id="headerLeft" style="display: flex;">
           <div>
             <input
               type="image"
@@ -18,11 +23,11 @@
               src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg"
               alt="Zara_Logo"
               id="logo"
-              style="width: 212px"
+              style=" width: 212px"
             />
           </router-link>
         </div>
-        <div id="headerRight">
+        <div >
           <div id="headerRightLeft">
             <router-link
               to="/search"
@@ -51,7 +56,7 @@
               style="text-decoration: none; padding: 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <img
-                style="width: 22px; height: 19px;"
+                style= "width: 22px; height: 19px;"
                 src="https://cdn-icons-png.flaticon.com/512/3110/3110065.png"
                 alt="Cart"
               />
@@ -115,39 +120,174 @@
   </header>
 </template>
 <script lang="ts">
-// import { defineComponent, ref } from 'vue';
-
-
-// export default defineComponent({
-//   name: 'Header',
-//   components: {
-//       Woman,
-//       Men,
-//       Kid,
-//       Beauty
-//     },
-//     setup() {
-//       const isMenuOpen = ref(false);
-//       const display = ref('');
+import { defineComponent, ref } from 'vue';
+import Woman from './Women.vue';
+import Men from './Men.vue';
+import Kid from './Kid.vue';
+import Beauty from './Beauty.vue';
+export default defineComponent({
+  name: 'Header',
+  components: {
+      Woman,
+      Men,
+      Kid,
+      Beauty
+    },
+    setup() {
+      const isMenuOpen = ref(false);
+      const display = ref('');
       
-//       const toggleMenu = () => {
-//         isMenuOpen.value = !isMenuOpen.value;
-//       };
+      const toggleMenu = () => {
+        isMenuOpen.value = !isMenuOpen.value;
+      };
       
-//       const handleShow = (option) => {
-//         display.value = option;
-//       };
+      const handleShow = (option:any  ) => {
+        display.value = option;
+      };
       
-//       return {
-//         isMenuOpen,
-//         display,
-//         toggleMenu,
-//         handleShow
-//       };
-//     }
-// });
+      return {
+        isMenuOpen,
+        display,
+        toggleMenu,
+        handleShow
+      };
+    }
+});
 </script>
 
 <style scoped>
-/* Add your CSS styles here */
+
+/* Header container */
+#headerContents {
+  
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+}
+
+/* Logo */
+#logo {
+  
+  width: 212px;
+}
+
+/* Menu icon */
+#menu {
+  width: 30px;
+  height: 30px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+/* Header right section */
+#headerRight {
+  width: 30%;
+  display: flex;
+  margin-right: 30px;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+/* Header right links */
+
+#headerRightRight {
+  display: flex;
+}
+
+/* Header right link */
+.menuLink {
+  text-decoration: none;
+  padding: 0px 10px;
+  font-size: 13px;
+  color: rgb(41, 41, 41);
+  font-weight: 100;
+  font-family: 'Neue-Helvetica', Helvetica, Arial, Sans-Serif;
+  font-stretch: ultra-condensed;
+}
+
+/* Cart icon */
+#cartIcon {
+  width: 22px;
+  height: 19px;
+}
+
+/* Menu modal */
+#menuModal {
+  position: fixed;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Menu content */
+.menuContent {
+  position: relative;
+  background-color: white;
+  width: 470px;
+  padding: 20px;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 21px;
+  color: grey;
+  cursor: pointer;
+}
+
+/* Menu options */
+#menuOptions {
+  position: relative;
+  overflow: hidden;
+  height: 4000px;
+  width: 470px;
+  background-color: white;
+  margin-top: -30px;
+  margin-left: -20px;
+}
+
+/* Menu options list */
+.menuOptionsList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 90px;
+  margin-bottom: 25px;
+}
+
+/* Menu option */
+.menuOption {
+  margin-left: -10px;
+  margin-top: -40px;
+  font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  color: grey;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* Active menu option */
+.menuOption.active {
+  color: black;
+}
+
+/* Extra options */
+#menuExtraOptions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Extra options list item */
+#menuExtraOptions ul li {
+  margin-top: 10px;
+}
+
 </style>
