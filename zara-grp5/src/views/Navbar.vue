@@ -29,29 +29,30 @@
         </div>
         <div >
           <div id="headerRightLeft">
-            <router-link
+            
+            <Router-link
               to="/search"
               style="padding: 0% 60% 0% 0%; font-size: 13px; text-decoration: none; border-bottom: 1px solid black; color: rgb(41, 41, 41); font-weight: 700; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">SEARCH</span>
-            </router-link>
+            </Router-link>
           </div>
           <div id="headerRightRight">
-            <router-link
+            <Router-link
               to="/login"
               style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">LOG IN</span>
-            </router-link>
+            </Router-link>
   
-            <router-link
+            <Router-link
               to="/help"
               style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">HELP</span>
-            </router-link>
+            </Router-link>
   
-            <router-link
+            <Router-link
               to="/cart"
               style="text-decoration: none; padding: 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
@@ -60,7 +61,7 @@
                 src="https://cdn-icons-png.flaticon.com/512/3110/3110065.png"
                 alt="Cart"
               />
-            </router-link>
+            </Router-link>
           </div>
         </div>
       </div>
@@ -120,6 +121,7 @@
   </header>
 </template>
 <script lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
 import { defineComponent, ref } from 'vue';
 import Woman from './Woman.vue';
 import Men from './Men.vue';
