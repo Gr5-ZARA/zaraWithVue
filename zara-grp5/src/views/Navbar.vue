@@ -27,7 +27,7 @@
             />
           </router-link>
         </div>
-        <div >
+        <div id="headerRight">
           <div id="headerRightLeft">
             
             <Router-link
@@ -170,7 +170,7 @@ export default defineComponent({
 
 /* Logo */
 #logo {
-  
+  margin-left: 80px;
   width: 212px;
 }
 
@@ -193,12 +193,13 @@ export default defineComponent({
 
 /* Header right links */
 
-#headerRightRight {
+ #headerRightRight {
   display: flex;
-}
+}  
 
 /* Header right link */
 .menuLink {
+ 
   text-decoration: none;
   padding: 0px 10px;
   font-size: 13px;
