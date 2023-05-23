@@ -121,7 +121,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import Woman from './Women.vue';
+import Woman from './Woman.vue';
 import Men from './Men.vue';
 import Kid from './Kid.vue';
 import Beauty from './Beauty.vue';
@@ -213,7 +213,7 @@ export default defineComponent({
 }
 
 /* Menu modal */
-#menuModal {
+/* #menuModal {
   position: fixed;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
@@ -224,15 +224,15 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 /* Menu content */
-.menuContent {
+/* .menuContent {
   position: relative;
   background-color: white;
   width: 470px;
   padding: 20px;
-}
+} */
 
 /* Close button */
 .close {
@@ -245,7 +245,7 @@ export default defineComponent({
 }
 
 /* Menu options */
-#menuOptions {
+/* #menuOptions {
   position: relative;
   overflow: hidden;
   height: 4000px;
@@ -253,18 +253,18 @@ export default defineComponent({
   background-color: white;
   margin-top: -30px;
   margin-left: -20px;
-}
+} */
 
 /* Menu options list */
-.menuOptionsList {
+/* .menuOptionsList {
   display: flex;
   flex-direction: column;
   margin-top: 90px;
   margin-bottom: 25px;
-}
+} */
 
-/* Menu option */
-.menuOption {
+/* Menu option */ 
+/* .menuOption {
   margin-left: -10px;
   margin-top: -40px;
   font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
@@ -274,20 +274,25 @@ export default defineComponent({
 }
 
 /* Active menu option */
-.menuOption.active {
+/* .menuOption.active {
   color: black;
-}
+} */
 
 /* Extra options */
-#menuExtraOptions ul {
+/* #menuExtraOptions ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
+} */
 
 /* Extra options list item */
-#menuExtraOptions ul li {
+/* #menuExtraOptions ul li {
   margin-top: 10px;
-}
-
+} */
+.menuOption {
+    text-decoration: none !important;
+    cursor: default !important;
+     color: grey; 
+    font-size: x-small;
+  }
 </style>
