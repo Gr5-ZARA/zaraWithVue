@@ -1,6 +1,7 @@
 <template>
     <div style="background-color: white">
       <input
+        style="font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; color: rgb(134, 134, 134); font-size: 15px; margin-top: 200px"
         class="searchbar"
         type="text"
         placeholder="Search for an item"
@@ -8,10 +9,10 @@
         @input="handleSearch"
       />
   
-      <div v-if="searchedItem">
-        <img :src="searchedItem.productimage" alt="image" style="width: 230px; height: 350px" />
-        <div>Product Name: {{ searchedItem.productname }}</div>
-        <div>Product Price: {{ searchedItem.productprice }}</div>
+      <div v-for="result in filteredItems" :key="result.productId">
+        <img :src="result.productimage" alt="image" style="width: 230px; height: 350px" />
+        <div>Product Name: {{ result.productname }}</div>
+        <div>Product Price: {{ result.productprice }}</div>
       </div>
     </div>
   </template>
@@ -24,16 +25,16 @@
       return {
         search: '',
         results: [],
-        searchedItem: null,
+        filteredItems: [],
       };
     },
     methods: {
       handleSearch() {
-        const filtered = this.results.find((item) =>
+        const filtered = this.results.filter((item) =>
           item.productname.toLowerCase().includes(this.search.toLowerCase())
         );
-        this.searchedItem = filtered;
-        console.log(this.searchedItem, 'this is data');
+        this.filteredItems = filtered;
+        console.log(this.filteredItems, 'this is data');
       },
       fetchData(searchTerm) {
         axios
@@ -64,17 +65,17 @@
   
   <style scoped>
   .searchbar {
-    margin-top: 1.6em;
-    width: 98%;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgb(8, 8, 8);
-    padding: 0.2em 0em;
-  }
-  
-  .searchbar::placeholder {
-    color: rgb(30, 80, 95);
-    margin-bottom: 20px;
-  }
+  margin-top: 1.6em;
+  width: 98%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(8, 8, 8);
+  padding: 0.2em 0em;
+}
+
+.searchbar::placeholder {
+  color: rgb(30, 80, 95);
+  margin-bottom: 20px;
+}
   </style>
   
