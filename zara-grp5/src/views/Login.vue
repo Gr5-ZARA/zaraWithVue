@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
       <div class='container-login' >
         <div class='Left-login-form'>
@@ -21,8 +21,90 @@
     </div>
   </template>
   
- 
-
+  -->
+  <template>
+    <div>
+      <div class="container-login" style="margin-top: 2vh;">
+        <div class="Left-login-form" style="margin-top: 40vh;">
+          <h3 class="login-heading">LOG IN TO YOUR ACCOUNT</h3>
+          <div class="form-input-label">
+            <input
+              class="form-input-label"
+              type="text"
+              id="fname"
+              name="email"
+              placeholder="E-MAIL"
+              v-model="useremail"
+            />
+            <input
+              class="form-input-label"
+              type="password"
+              id="fname"
+              name="password"
+              placeholder="PASSWORD"
+              style="outline: none; border: none"
+              v-model="userpw"
+            />
+          </div>
+  
+          <button class="login-btn" @click="handleSubmit">LOGIN</button>
+          <br />
+          <p>{{ Error }}</p>
+          <br />
+          <a class="forgotpassword" href="#">HAVE YOU FORGOTTEN YOUR PASSWORD?</a>
+        </div>
+  
+        <div class="right-login-form" style="margin-top: 40vh;">
+          <h4>NEED ACCOUNT</h4>
+          <router-link to="/signup" class="create-btn" type="button">REGISTER</router-link>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script lang="ts">
+  import { defineComponent, ref } from 'vue';
+  import axios from 'axios';
+  
+  interface User {
+    useremail: string;
+    userpw: string;
+  }
+  
+  export default defineComponent({
+    name: 'LoginForm',
+    data() {
+      return {
+        useremail: '',
+        userpw: '',
+        Error: '',
+      };
+    },
+    methods: {
+      async handleSubmit() {
+        try {
+          const user: User = {
+            useremail: this.useremail,
+            userpw: this.userpw,
+          };
+  
+          const res = await axios.post('http://localhost:5000/api/user/login', user, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+  
+          window.localStorage.setItem('User', JSON.stringify(res.data));
+          this.Error = 'Authentication successful';
+          window.location.href = '/';
+        } catch (err) {
+          console.log(err);
+          this.Error = String(err);
+        }
+      },
+    },
+  });
+  </script>
 <style>
     .container-login{
         /* margin-top: 2vh; */
