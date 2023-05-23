@@ -18,41 +18,41 @@
               @click="toggleMenu"
             />
           </div>
-          <router-link to="/">
+          <RouterLink to="/">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg"
               alt="Zara_Logo"
               id="logo"
               style=" width: 212px"
             />
-          </router-link>
+          </RouterLink>
         </div>
         <div id="headerRight">
           <div id="headerRightLeft">
             
-            <Router-link
+            <RouterLink
               to="/search"
               style="padding: 0% 60% 0% 0%; font-size: 13px; text-decoration: none; border-bottom: 1px solid black; color: rgb(41, 41, 41); font-weight: 700; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">SEARCH</span>
-            </Router-link>
+            </RouterLink>
           </div>
           <div id="headerRightRight">
-            <Router-link
+            <RouterLink
               to="/login"
               style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">LOG IN</span>
-            </Router-link>
+            </RouterLink>
   
-            <Router-link
+            <RouterLink
               to="/help"
               style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">HELP</span>
-            </Router-link>
+            </RouterLink>
   
-            <Router-link
+            <RouterLink
               to="/cart"
               style="text-decoration: none; padding: 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
@@ -61,7 +61,7 @@
                 src="https://cdn-icons-png.flaticon.com/512/3110/3110065.png"
                 alt="Cart"
               />
-            </Router-link>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -119,6 +119,7 @@
       </div>
     </div>
   </header>
+  
 </template>
 <script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
