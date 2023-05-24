@@ -3,6 +3,8 @@ import HomeView from "../views/HomeView.vue"
 import Login from '@/views/Login.vue'
 import Signup from '../views/Signup.vue'
 import Search from '../views/Search.vue'
+// import Men from '../views/Men.vue'
+import product from '../views/product.vue'
 import Help from '../views/Help.vue'
 
 const router = createRouter({
@@ -29,10 +31,19 @@ const router = createRouter({
       component:Search
     },
     {
-      path: '/help',
-      name: 'Help',
-      component: Help
+      path:'/products/:category',
+      name:'Men',
+      component:product
+
+    },
+    {
+      path:'/help',
+      name:'Help ',
+      component:Help
+
     }
+
+
   ]
 })
 
