@@ -44,7 +44,7 @@
       onMounted(() => {
         fetchData();
       });
-  
+      console.log(data)
       return {
         data,
       };

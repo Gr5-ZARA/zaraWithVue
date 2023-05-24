@@ -16,7 +16,7 @@
   
   <script lang="ts">
   import { ref, reactive, onMounted } from 'vue';
-  import router from '@/router';
+  // import router from '@/router';
   import axios from 'axios';
 import { routeLocationKey } from 'vue-router';
   
@@ -37,15 +37,15 @@ import { routeLocationKey } from 'vue-router';
     setup() {
       const category = ref('');
       const products = ref<Product[]>([]);
-  
+      
       onMounted(async () => {
-        // category.value=route.params.id
-        // category.value = window.location.pathname.split('/')[2];
-        // console.log(category.value, 'this is 1');
+        // category.value=$route.params.id
+        category.value = window.location.pathname.split('/')[2];
+        console.log(category.value, 'this is 1');
   
-        if (route.paramas.category) {
+        if (category.value) {
           try {
-            const response = await axios.get<Product[]>(`http://localhost:5000/api/products/all/sub/${route.params.category}`);
+            const response = await axios.get<Product[]>(`http://localhost:5000/api/products/all/sub/${category.value}`);
             products.value = response.data;
           } catch (error) {
             console.log(error);

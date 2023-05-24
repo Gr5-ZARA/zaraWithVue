@@ -30,9 +30,8 @@ const router = createRouter({
     },
     {
       path:'/products/:category',
-      name:'Men',
+      name:'category',
       component:product
-
     }
 
   ]
