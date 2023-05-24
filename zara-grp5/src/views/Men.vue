@@ -1,9 +1,9 @@
 <template>
     <div>
-      <h2 v-for="product in data" :key="product.productid">
-        <RouterLink :to="`/products/${product['productsub-category']}`">
+      <h2 v-for="product in data" :key="product.productid" @click="refrechPage">
+        <router-link :to="`/products/${product['productsub-category']}`">
           {{ product['productsub-category'] }}
-        </RouterLink>
+        </router-link>
       </h2>
     </div>
   </template>
@@ -11,7 +11,7 @@
   <script lang="ts">
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
-  import { RouterLink, RouterView } from 'vue-router' 
+  import { RouterLink, RouterView, loadRouteLocation } from 'vue-router' 
   interface Product {
     productid: number;
     productname: string;
@@ -26,9 +26,13 @@
   
   export default {
     name: 'Men',
+    methods:{
+      refrechPage(){
+      location.reload()
+    }
+    },
     setup() {
       const data = ref<Product[]>([]);
-  
       const fetchData = () => {
         axios
           .get<Product[]>(`http://localhost:5000/api/products/all/Men`)
