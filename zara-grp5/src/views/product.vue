@@ -40,12 +40,12 @@ import { routeLocationKey } from 'vue-router';
   
       onMounted(async () => {
         // category.value=route.params.id
-        // category.value = window.location.pathname.split('/')[2];
-        // console.log(category.value, 'this is 1');
+        category.value = window.location.pathname.split('/')[2];
+        console.log(category.value, 'this is 1');
   
-        if (route.paramas.category) {
+        if (category.value) {
           try {
-            const response = await axios.get<Product[]>(`http://localhost:5000/api/products/all/sub/${route.params.category}`);
+            const response = await axios.get<Product[]>(`http://localhost:5000/api/products/all/sub/${category.value}`);
             products.value = response.data;
           } catch (error) {
             console.log(error);

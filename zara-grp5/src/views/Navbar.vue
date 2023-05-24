@@ -1,10 +1,11 @@
 
-<template>
+<template >
     <header style="
           width: '100%';
           padding: '12px 24px 20px 24px';
           position: 'fixed';
-          margin: '0px';"
+          margin: '0px';
+          position:fixed;"
           
         >
       <div id="headerContents" >
@@ -127,7 +128,7 @@
   </header>
   
 </template>
-<HomeView/>
+
 <script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import { defineComponent, ref } from 'vue';

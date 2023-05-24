@@ -11,6 +11,8 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "@vue/runtime-core": "^3.3.4",
     "axios": "^1.4.0",
     "vue": "^3.3.2",
