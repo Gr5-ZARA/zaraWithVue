@@ -5,6 +5,7 @@
           padding: '12px 24px 20px 24px';
           position: 'fixed';
           margin: '0px';"
+          
         >
       <div id="headerContents" >
         <div id="headerLeft" style="display: flex;">
@@ -115,6 +116,7 @@
               </div>
             </ul>
           </div>
+          <HomeView/>
         </div>
       </div>
     </div>
@@ -128,14 +130,17 @@ import Woman from './Woman.vue';
 import Men from './Men.vue';
 import Kid from './Kid.vue';
 import Beauty from './Beauty.vue';
+import HomeView from './HomeView.vue';
+
 export default defineComponent({
   name: 'Header',
   components: {
-      Woman,
-      Men,
-      Kid,
-      Beauty
-    },
+    Woman,
+    Men,
+    Kid,
+    Beauty,
+    HomeView
+},
     setup() {
       const isMenuOpen = ref(false);
       const display = ref('');
