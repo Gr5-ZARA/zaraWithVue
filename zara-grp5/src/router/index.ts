@@ -6,7 +6,7 @@ import Search from '../views/Search.vue'
 // import Men from '../views/Men.vue'
 import product from '../views/product.vue'
 import Help from '../views/Help.vue'
-
+import prod from '@/views/prod.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -41,9 +41,12 @@ const router = createRouter({
       name:'Help ',
       component:Help
 
+    },
+    {
+      path:'/prod/:name',
+      name:'prod ',
+      component:prod
     }
-
-
   ]
 })
 
