@@ -16,7 +16,7 @@
   
   <script lang="ts">
   import { ref, reactive, onMounted } from 'vue';
-  import router from '@/router';
+  // import router from '@/router';
   import axios from 'axios';
 import { routeLocationKey } from 'vue-router';
   
@@ -35,9 +35,9 @@ import { routeLocationKey } from 'vue-router';
   export default {
     name: 'OneProduct',
     setup() {
-      const category = ref('');
-      const products = ref<Product[]>([]);
-  
+      var category = ref('');
+      var products = ref<Product[]>([]);
+      
       onMounted(async () => {
         // category.value=route.params.id
         category.value = window.location.pathname.split('/')[2];
