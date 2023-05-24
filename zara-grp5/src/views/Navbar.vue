@@ -8,14 +8,14 @@
           
         >
       <div id="headerContents" >
-        <div id="headerLeft" style="display: flex;">
+        <div id="headerLeft" style="display: flex ;">
           <div>
             <input
               type="image"
               name="menu"
               src="https://icon-library.com/images/menu-icon-png-3-lines/menu-icon-png-3-lines-14.jpg"
               id="menu"
-              style="width: 30px; height: 30px; margin-right: 30px"
+              style="width: 30px; height: 30px; margin-right: 30px ; "
               @click="toggleMenu"
             />
           </div>
@@ -66,6 +66,7 @@
           </div>
         </div>
       </div>
+      
       <div v-if="isMenuOpen" id="menuModal" class="menuOpacity animatedMenuShow">
         <div class="menuContent">
           <header id="headerRight" style="width: 1000%; display: flex; margin-right: 30px; padding: 10px; justify-content: space-between;">
@@ -80,7 +81,7 @@
               <ul class="close" @click="toggleMenu" style="margin-right: 100px; margin-left: -41px; font-size: 21px; color: grey;">
                 ✕
               </ul>
-
+              
               <div style="margin-top: 90px; display: flex; flex-wrap: wrap; margin-bottom: 25px;">
                 <p class="menuOption" style="margin-left: -10px; margin-top: -40px; font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; color: grey; font-size: 11px; cursor: pointer;" @click="handleShow('woman')">
                   WOMAN
@@ -96,6 +97,7 @@
                 </p>
               </div>
               <li class="menuOption" style="margin-top: -20px; font-size: 20px;">NEW</li>
+              
               <div class="menuOption" v-if="display === 'men'">
                 <Men />
               </div>
@@ -116,13 +118,16 @@
               </div>
             </ul>
           </div>
-          <HomeView/>
+       
         </div>
+     
       </div>
+     
     </div>
   </header>
   
 </template>
+<HomeView/>
 <script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import { defineComponent, ref } from 'vue';
@@ -140,6 +145,7 @@ export default defineComponent({
     Kid,
     Beauty,
     HomeView
+    
 },
     setup() {
       const isMenuOpen = ref(false);
@@ -181,12 +187,13 @@ export default defineComponent({
 }
 
 /* Menu icon */
-#menu {
+/* #menu {
+  
   width: 30px;
   height: 30px;
   margin-right: 30px;
   cursor: pointer;
-}
+} */
 
 /* Header right section */
 #headerRight {
