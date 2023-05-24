@@ -244,12 +244,12 @@ export default defineComponent({
 } */
 
 /* Menu content */
-/* .menuContent {
+.menuContent {
   position: relative;
   background-color: white;
   width: 470px;
   padding: 20px;
-} */
+}
 
 /* Close button */
 .close {
@@ -257,8 +257,9 @@ export default defineComponent({
   top: 10px;
   right: 10px;
   font-size: 21px;
-  color: grey;
+  color: rgb(106, 104, 104);
   cursor: pointer;
+  
 }
 
 /* Menu options */
@@ -273,12 +274,12 @@ export default defineComponent({
 } */
 
 /* Menu options list */
-/* .menuOptionsList {
+.menuOptionsList {
   display: flex;
   flex-direction: column;
   margin-top: 90px;
   margin-bottom: 25px;
-} */
+}
 
 /* Menu option */ 
 /* .menuOption {
@@ -288,24 +289,24 @@ export default defineComponent({
   color: grey;
   font-size: 11px;
   cursor: pointer;
-}
-
-/* Active menu option */
-/* .menuOption.active {
-  color: black;
 } */
 
+/* Active menu option */
+.menuOption.active {
+  color: black;
+}
+
 /* Extra options */
-/* #menuExtraOptions ul {
+#menuExtraOptions ul {
   list-style: none;
   margin: 0;
   padding: 0;
-} */
+}
 
 /* Extra options list item */
-/* #menuExtraOptions ul li {
+#menuExtraOptions ul li {
   margin-top: 10px;
-} */
+}
 .menuOption {
     text-decoration: none !important;
     cursor: default !important;
