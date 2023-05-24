@@ -5,6 +5,7 @@
           padding: '12px 24px 20px 24px';
           position: 'fixed';
           margin: '0px';"
+          
         >
       <div id="headerContents" >
         <div id="headerLeft" style="display: flex;">
@@ -18,41 +19,41 @@
               @click="toggleMenu"
             />
           </div>
-          <router-link to="/">
+          <RouterLink to="/">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Zara_Logo.svg"
               alt="Zara_Logo"
               id="logo"
               style=" width: 212px"
             />
-          </router-link>
+          </RouterLink>
         </div>
-        <div >
+        <div id="headerRight">
           <div id="headerRightLeft">
             
-            <Router-link
+            <RouterLink
               to="/search"
               style="padding: 0% 60% 0% 0%; font-size: 13px; text-decoration: none; border-bottom: 1px solid black; color: rgb(41, 41, 41); font-weight: 700; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">SEARCH</span>
-            </Router-link>
+            </RouterLink>
           </div>
           <div id="headerRightRight">
-            <Router-link
+            <RouterLink
               to="/login"
               style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">LOG IN</span>
-            </Router-link>
+            </RouterLink>
   
-            <Router-link
+            <RouterLink
               to="/help"
               style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
               <span class="menuLink">HELP</span>
-            </Router-link>
+            </RouterLink>
   
-            <Router-link
+            <RouterLink
               to="/cart"
               style="text-decoration: none; padding: 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
             >
@@ -61,7 +62,7 @@
                 src="https://cdn-icons-png.flaticon.com/512/3110/3110065.png"
                 alt="Cart"
               />
-            </Router-link>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -115,10 +116,12 @@
               </div>
             </ul>
           </div>
+          <HomeView/>
         </div>
       </div>
     </div>
   </header>
+  
 </template>
 <script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
@@ -127,14 +130,17 @@ import Woman from './Woman.vue';
 import Men from './Men.vue';
 import Kid from './Kid.vue';
 import Beauty from './Beauty.vue';
+import HomeView from './HomeView.vue';
+
 export default defineComponent({
   name: 'Header',
   components: {
-      Woman,
-      Men,
-      Kid,
-      Beauty
-    },
+    Woman,
+    Men,
+    Kid,
+    Beauty,
+    HomeView
+},
     setup() {
       const isMenuOpen = ref(false);
       const display = ref('');
@@ -170,7 +176,7 @@ export default defineComponent({
 
 /* Logo */
 #logo {
-  
+  margin-left: 80px;
   width: 212px;
 }
 
@@ -193,12 +199,13 @@ export default defineComponent({
 
 /* Header right links */
 
-#headerRightRight {
+ #headerRightRight {
   display: flex;
-}
+}  
 
 /* Header right link */
 .menuLink {
+ 
   text-decoration: none;
   padding: 0px 10px;
   font-size: 13px;
