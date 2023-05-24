@@ -39,7 +39,7 @@ import { routeLocationKey } from 'vue-router';
       var products = ref<Product[]>([]);
       
       onMounted(async () => {
-        // category.value=$router.params.id
+        // category.value=route.params.id
         category.value = window.location.pathname.split('/')[2];
         console.log(category.value, 'this is 1');
   
