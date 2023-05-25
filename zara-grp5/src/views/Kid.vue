@@ -25,7 +25,7 @@ interface Product {
 }
 
 export default {
-  name: 'Men',
+  name: 'Kid',
   methods:{
     refrechPage(){
     location.reload()
