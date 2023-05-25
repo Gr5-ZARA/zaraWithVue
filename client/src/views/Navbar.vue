@@ -321,6 +321,22 @@ export default defineComponent({
 }
 
 /* Menu modal */
+.menuModal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
 .menuContent {
   position: relative;
   background-color: white;
@@ -332,7 +348,7 @@ export default defineComponent({
 .close {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
   font-size: 21px;
   color: rgb(106, 104, 104);
   cursor: pointer;
@@ -373,6 +389,11 @@ export default defineComponent({
 }
 
 /* Menu modal show animation */
+.menuOpacity {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .animatedMenuShow {
   animation: menuShow 0.5s ease-in-out;
 }
@@ -388,3 +409,4 @@ export default defineComponent({
   }
 }
 </style>
+
