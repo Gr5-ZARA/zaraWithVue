@@ -98,13 +98,15 @@ export default defineComponent({
   
   <style >
   .con{
-    margin-Top : "-100px";
-    margin : 50px
+    margin-Top : "100px";
+    margin : 30px;
+    
   }
   .container{
       width: 100%;
       display: flex;
       margin: 5%;
+      position:fixed;
       height: 60%;
       margin-top: 40px;
     }
@@ -124,6 +126,8 @@ export default defineComponent({
     }
     .input-text-box1{
       display: flex;
+      margin-top:227px    
+
   
     }
     .tele{
@@ -189,13 +193,14 @@ export default defineComponent({
       font-weight: bold;
       justify-content: space-between;
       margin-left:70px;
-      margin-top:50px    
+      margin-top:200px    
     }
     .signup-footer{
       display: flex;
       width: 40%;
       justify-content: space-between;
       margin: 8%;
+      
     }
     .list{
     text-decoration: none;
@@ -204,6 +209,7 @@ export default defineComponent({
     }
     .header-heading{
       font-size: 80%;
+      
     } 
     
   
