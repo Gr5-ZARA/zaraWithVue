@@ -64,7 +64,38 @@ import { routeLocationKey } from 'vue-router';
   </script>
   
   <style scoped>
-  /* .subdivproduct {
-    Add your CSS styles here
-  } */
+  .subdivproduct{
+    display: flex;
+    font-size: 70%;
+    justify-content: space-between;
+    color: black;
+    text-decoration: none;
+
+
+}
+.cart-price{
+    text-decoration: none;
+}
+
+.render-data{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+
+    width: 100%;
+    margin: auto;
+
+}
+
+.Main{
+    width: 90vw;
+    /* border: 1px solid blue; */
+    margin: auto;
+    margin-top: 2%;
+}
+
+.Product_image_tri{
+    width: 100%;
+}
+
   </style>
