@@ -41,8 +41,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
-import { routeLocationKey, useRoute,useRouter } from 'vue-router';
-import {useUserContext} from './Context'
+
 interface User {
   useremail: string;
   userpw: string;
@@ -62,7 +61,6 @@ export default defineComponent({
       this.$router.push({name:'home'})
     },
     async handleSubmit() {
-      const {currentUser,setCurrentUser}=useUserContext()
       try {
         const user: User = {
           useremail: this.useremail,

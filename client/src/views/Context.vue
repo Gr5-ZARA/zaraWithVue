@@ -1,3 +1,4 @@
+<script lang="ts">
 import { provide, inject, InjectionKey, reactive } from 'vue';
 
 interface User {
@@ -51,3 +52,4 @@ export function ContextProvider(app: any) {
 
   return app;
 }
+</script>
