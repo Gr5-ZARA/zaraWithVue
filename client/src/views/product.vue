@@ -7,18 +7,18 @@
           </router-link>
           <div class="subdivproduct" style="margin-left: 520px; margin-top: 15px; font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif'; color: rgb(134, 134, 134); font-size: 15px;">
             <h6>{{ product.productname }}</h6>
-            <h5>{{ product.productprice }}</h5>
+            <h5 style="margin-left:100px">{{ product.productprice }}$</h5>
           </div>
-        </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
   <script lang="ts">
-  import { ref, reactive, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue';
   // import router from '@/router';
   import axios from 'axios';
-import { routeLocationKey } from 'vue-router';
+
   
   interface Product {
     productid: number;
@@ -37,7 +37,6 @@ import { routeLocationKey } from 'vue-router';
     setup() {
       var category = ref('');
       var products = ref<Product[]>([]);
-      
       onMounted(async () => {
         // category.value=route.params.id
         category.value = window.location.pathname.split('/')[2];
@@ -53,8 +52,6 @@ import { routeLocationKey } from 'vue-router';
         }
       });
   
-      console.log(category.value, 'this is 2');
-  
       return {
         category,
         products,
@@ -64,7 +61,46 @@ import { routeLocationKey } from 'vue-router';
   </script>
   
   <style scoped>
-  /* .subdivproduct {
-    Add your CSS styles here
-  } */
+  .subdivproduct{
+    display: flex;
+    font-size: 70%;
+    /* justify-content: space-between; */
+    color: black;
+    text-decoration: none;
+
+
+}
+.cart-price{
+    text-decoration: none;
+}
+
+.render-data{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+
+    width: 100%;
+    margin: auto;
+
+}
+
+.Main{
+    width: 90vw;
+    /* border: 1px solid blue; */
+    margin: auto;
+    margin-top: 2%;
+}
+
+.Product_image_tri{
+    width: 100%;
+}
+.subsubcategories {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 550px;
+  text-align: center;
+  font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif';
+  color: rgb(134, 134, 134);
+  font-size: 15px;
+}
   </style>

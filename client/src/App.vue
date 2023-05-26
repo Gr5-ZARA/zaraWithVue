@@ -13,7 +13,3 @@ import HomeView from './views/HomeView.vue';
   <RouterView />
 </template>
 
-<style scoped>
-
-
-</style>
