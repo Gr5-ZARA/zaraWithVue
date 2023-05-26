@@ -5,12 +5,20 @@
         {{ product['productsub-category'] }}
       </router-link>
     </h2>
+    <div
+                class="menuOption"
+                v-if="display === 'OVERSAZE'"
+                style="text-decoration: none; cursor: default;"
+              >
+              <subwoman/>
+            </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineComponent } from 'vue';
 import axios from 'axios';
+import Subwoman from './Subwoman.vue';
 import { RouterLink, RouterView, loadRouteLocation } from 'vue-router' 
 interface Product {
   productid: number;
@@ -24,8 +32,10 @@ interface Product {
   productimage: string;
 }
 
-export default {
-  name: 'Woman',
+export default defineComponent ({
+  name: 'Subwoman',
+  component:{Subwoman},
+  
   methods:{
     refrechPage(){
     location.reload()
@@ -53,6 +63,6 @@ export default {
       data,
     };
   },
-};
+})
 </script>
   
