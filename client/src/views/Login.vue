@@ -57,6 +57,9 @@ export default defineComponent({
     };
   },
   methods: {
+    addCart(){
+
+    },
     goToHome(){
       this.$router.push({name:'home'})
     },
