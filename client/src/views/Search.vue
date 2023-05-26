@@ -1,7 +1,7 @@
 <template>
   <div style="background-color: white">
     <input
-      style="font-family: 'Helvetica Neue', Helvetica, Arial, Lucida Grande, sans-serif; color: rgb(134, 134, 134); font-size: 15px; margin-top: 200px"
+      style="font-family: 'Neue Helvetica', Helvetica, Arial, Lucida Grande, sans-serif; color: rgb(134, 134, 134); font-size: 15px; margin-top: 200px"
       class="searchbar"
       type="text"
       placeholder="Search for an item"
@@ -9,34 +9,49 @@
       @input="handleSearch"
     />
 
-    <div v-for="result in filteredItems" :key="result.productId">
-      <img :src="result.productimage" alt="image" style="width: 230px; height: 350px" />
-      <div>Product Name: {{ result.productname }}</div>
-      <div>Product Price: {{ result.productprice }}</div>
+    <div v-if="filteredItems.length > 0">
+      <div v-for="result in filteredItems" :key="result.productId">
+        <img :src="result.productimage" alt="image" style="width: 230px; height: 350px" />
+        <div>Product Name: {{ result.productname }}</div>
+        <div>Product Price: {{ result.productprice }}</div>
+      </div>
+    </div>
+    <div v-else-if="search !== ''">
+      No results found.
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
 
 export default {
-  data() {
+  data(): {
+    search: string;
+    results: any[];
+    filteredItems: any[];
+    searchTimer: ReturnType<typeof setTimeout> | null;
+  } {
     return {
       search: '',
       results: [],
       filteredItems: [],
+      searchTimer: null,
     };
   },
   methods: {
-    handleSearch() {
-      const filtered = this.results.filter((item) =>
-        item.productname.toLowerCase().includes(this.search.toLowerCase())
-      );
-      this.filteredItems = filtered;
+    handleSearch(): void {
+      if (this.search === '') {
+        this.filteredItems = [];
+      } else {
+        const filtered = this.results.filter((item: { productname: string }) =>
+          item.productname.toLowerCase().includes(this.search.toLowerCase())
+        );
+        this.filteredItems = filtered;
+      }
       console.log(this.filteredItems, 'this is data');
     },
-    fetchData(searchTerm) {
+    fetchData(searchTerm: string): void {
       axios
         .get(`http://localhost:5000/api/products/`)
         .then((response) => {
@@ -51,8 +66,8 @@ export default {
   },
   watch: {
     search: {
-      handler(value) {
-        clearTimeout(this.searchTimer);
+      handler(value: string): void {
+        clearTimeout(this.searchTimer!);
         this.searchTimer = setTimeout(() => {
           this.fetchData(value);
         }, 300);
@@ -71,7 +86,7 @@ export default {
   border: none;
   border-bottom: 1px solid rgb(8, 8, 8);
   padding: 0.2em 0em;
-  font-family: 'Helvetica Neue', Helvetica, Arial, Lucida Grande, sans-serif;
+  font-family: 'Neue Helvetica', Helvetica, Arial, Lucida Grande, sans-serif;
 }
 
 .searchbar::placeholder {
