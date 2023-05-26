@@ -10,7 +10,7 @@
                 v-if="display === 'OVERSAZE'"
                 style="text-decoration: none; cursor: default;"
               >
-              <subwoman/>
+              <Subwoman/>
             </div>
   </div>
 </template>
@@ -42,6 +42,12 @@ export default defineComponent ({
   }
   },
   setup() {
+    const isMenuOpen = ref(false);
+      const display = ref('');
+      
+      
+      
+      
     const data = ref<Product[]>([]);
     const fetchData = () => {
       axios
@@ -61,8 +67,12 @@ export default defineComponent ({
     console.log(data)
     return {
       data,
+      isMenuOpen,
+        display,
     };
+   
   },
+ 
 })
 </script>
   
