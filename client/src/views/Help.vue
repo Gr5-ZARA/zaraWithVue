@@ -9,25 +9,74 @@
         placeholder="Search"
         @input="handleSearchChange"
       />
+      <ul v-if="searchResults.length > 0" class="dropdown">
+        <li v-for="result in searchResults" :key="result.id" @click="handleResultClick(result)">
+          {{ result.question }}
+        </li>
+      </ul>
+      <div v-if="selectedQuestion">
+        <h4 class="selected-question">{{ selectedQuestion.question }}</h4>
+        <p class="answer">{{ selectedQuestion.answer }}</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:5000'; // Replace with the correct base URL of your backend server
+
+interface Question {
+  id: number;
+  question: string;
+}
+
+interface SelectedQuestion {
+  question: string;
+  answer: string;
+}
 
 export default defineComponent({
   name: 'Help',
   setup() {
     const searchText = ref('');
+    const searchResults = ref<Question[]>([]);
+    const selectedQuestion = ref<SelectedQuestion | null>(null);
 
-    const handleSearchChange = (event: InputEvent) => {
-      searchText.value = (event.target as HTMLInputElement).value;
+    const handleSearchChange = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/help`, {
+          params: {
+            searchTerm: searchText.value
+          }
+        });
+        searchResults.value = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const handleResultClick = async (result: Question) => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/help/${result.id}`);
+        selectedQuestion.value = {
+          question: result.question,
+          answer: response.data.answer
+        };
+        searchResults.value = []; // Clear the searchResults array to hide the dropdown
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     return {
       searchText,
+      searchResults,
+      selectedQuestion,
       handleSearchChange,
+      handleResultClick
     };
   },
 });
@@ -63,6 +112,39 @@ export default defineComponent({
   padding: 0.2em 0em;
   margin-left: -650px;
   background: none;
+  font-family: 'Neue Helvetica', Arial, sans-serif;
+}
+
+.dropdown {
+  position: absolute;
+  margin-top: 2px;
+  padding: 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.dropdown li {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'Neue Helvetica', Arial, sans-serif;
+}
+
+.dropdown li:hover {
+  background-color: #f2f2f2;
+}
+
+.selected-question {
+  margin-right: 1000px;
+  margin-top: 200px;
+  font-family: 'Neue Helvetica', Arial, sans-serif;
+}
+
+.answer {
+  margin-top: 0px;
   font-family: 'Neue Helvetica', Arial, sans-serif;
 }
 </style>
