@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import user, { User } from '../models/users';
 import bcrypt from 'bcrypt';
 import jwt, { Secret } from 'jsonwebtoken';
+import connection from '../connection';
 
 const getUser = (req: Request, res: Response) => {
   user.getAll((err: Error | null, results: any[] | null) => {
@@ -45,6 +46,7 @@ const userLogin = async (req: Request, res: Response) => {
     const userpw: string = req.body.userpw;
 
     user.login(useremail, async (err, user) => {
+      const date=new Date();
       if (err) {
         console.error(err);
         return res.status(500).send("An error occurred");
@@ -57,7 +59,14 @@ const userLogin = async (req: Request, res: Response) => {
 
         if (isPasswordValid) {
           const token = jwt.sign({ useremail: user[0].useremail }, "zaraToken" as Secret);
-          return res.status(200).json({ token,user, message: 'You logged in successfully' });
+          connection.query('SELECT * FROM orders WHERE userid=?',[user[0].userid],(err,check:any)=>{
+            if(check.length>0){
+              return res.status(200).json({ token,user, message: 'You logged in successfully' });
+            }
+            connection.query('INSERT INTO orders (userid,orderdate) VALUES (?,?)',[user[0].userid,date.getDay()],(err,yup)=>{
+              return res.status(200).json({ token,user, message: 'You logged in successfully' });
+            })
+          })
         } else {
           return res.status(401).json({ message: 'Invalid password' });
         }

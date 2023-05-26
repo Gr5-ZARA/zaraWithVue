@@ -41,7 +41,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
-import { routeLocationKey, useRoute,useRouter } from 'vue-router';
+
 interface User {
   useremail: string;
   userpw: string;
@@ -57,6 +57,9 @@ export default defineComponent({
     };
   },
   methods: {
+    addCart(){
+
+    },
     goToHome(){
       this.$router.push({name:'home'})
     },

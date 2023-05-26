@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { searchQuestions, getAnswer } from '../models/help';
 
+
 export const searchHelp = (req: Request, res: Response) => {
   const searchTerm = req.query.searchTerm as string;
 
@@ -29,3 +30,4 @@ export const getHelpAnswer = (req: Request, res: Response) => {
       res.status(500).json({ error: 'An error occurred while retrieving the answer' });
     });
 };
+  

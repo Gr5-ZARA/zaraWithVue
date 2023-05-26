@@ -55,6 +55,7 @@
 <script lang="ts">
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 interface Product {
   productname: string;
@@ -71,9 +72,10 @@ interface Product {
 export default {
   name: 'DetailName',
   setup() {
+    const router=useRouter()
     const data = ref<Product[]>([]);
     const orderid = ref<number>(0);
-
+    
     const fetchData = (name: string) => {
       axios
         .get(`http://localhost:5000/api/products/one/${name}`)
@@ -84,16 +86,11 @@ export default {
         .catch((err) => console.log(err));
     };
 
-    const fetchOrderId = (username: string) => {
-      axios
-        .get(`http://localhost:5000/api/user/one/${username}`)
-        .then((res) => {
-          console.log(res);
+    const fetchOrderId = async(username: string) => {
+      console.log(username)
+      const res=await axios.get(`http://localhost:5000/api/user/one/${username}`)
+          console.log(res.data);
           orderid.value = res.data[0].orderid;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
     };
 
     const handleAdd = () => {
@@ -108,8 +105,9 @@ export default {
         productimage: data.value[0]?.productimage || '',
         orderid: orderid.value,
       };
-
+      console.log(prod)
       postData(prod);
+      router.push('/cart')
     };
 
     const postData = (prod: Product) => {
@@ -125,12 +123,15 @@ export default {
 
     onMounted(() => {
       const name = window.location.pathname.split('/')[2];
+      console.log(name)
       fetchData(name);
 
       const storedData = window.localStorage.getItem('User');
+      console.log(storedData)
       if (storedData) {
         const parsedData: UserData = JSON.parse(storedData);
         const username = parsedData.user?.[0].username;
+        // console.log(username)
         fetchOrderId(username);
       }
     });
