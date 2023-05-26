@@ -41,7 +41,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
-
+import { routeLocationKey, useRoute,useRouter } from 'vue-router';
 interface User {
   useremail: string;
   userpw: string;
@@ -57,6 +57,9 @@ export default defineComponent({
     };
   },
   methods: {
+    goToHome(){
+      this.$router.push({name:'home'})
+    },
     async handleSubmit() {
       try {
         const user: User = {
@@ -69,10 +72,11 @@ export default defineComponent({
             'Content-Type': 'application/json',
           },
         });
-
+        console.log(res.data)
         window.localStorage.setItem('User', JSON.stringify(res.data));
         this.Error = 'Authentication successful';
-        window.location.href = '/';
+        this.goToHome()
+        
       } catch (err) {
         console.log(err);
         this.Error = String(err);
