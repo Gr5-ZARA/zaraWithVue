@@ -56,6 +56,24 @@ CREATE TABLE IF NOT EXISTS `zara`.`orders` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+CREATE TABLE IF NOT EXISTS `help` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `question` VARCHAR(255) NOT NULL,
+  `answer` TEXT NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+INSERT INTO `help` (`question`, `answer`)
+VALUES
+  ('What is the return policy?', 'Our return policy allows you to return items within 30 days of purchase. Please make sure the items are in their original condition.'),
+  ('How can I track my order?', 'You can track your order by logging into your account on our website and navigating to the "Order History" section.'),
+  ('What payment methods do you accept?', 'We accept credit cards (Visa, Mastercard, American Express) and PayPal.'),
+  ('Do you offer international shipping?', 'Yes, we offer international shipping to select countries. Please check our website for the list of countries.'),
+  ('How can I contact customer support?', 'You can contact our customer support team by emailing isleem.azouuz@gmail.com or calling our toll-free number.');
+
 INSERT INTO `users` (`username`, `userlastname`, `useremail`, `userpw`) 
 VALUES 
   ('amrou', 'aln', 'amrou@gmail.com', 'password123'),
