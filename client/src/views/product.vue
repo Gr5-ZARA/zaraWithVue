@@ -1,18 +1,21 @@
 <template>
-    <div>
-      <div v-if="products.length > 0">
-        <div v-for="(product, index) in products" :key="index">
-          <router-link :to="`/prod/${product.productname}`" style="margin-top: 200px; margin-left: 100px;">
-            <img :src="product.productimage" style="margin-left: 420px; margin-top: 150px; width: 340px; height: 500px;" />
-          </router-link>
-          <div class="subdivproduct" style="margin-left: 520px; margin-top: 15px; font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif'; color: rgb(134, 134, 134); font-size: 15px;">
-            <h6>{{ product.productname }}</h6>
-            <h5>{{ product.productprice }}</h5>
-          </div>
+  <div>
+    <div v-if="products.length > 0">
+      <div v-for="(product, index) in products" :key="index">
+        <div class="subsubcategories">
+          {{ product['productsub-sub-category'] }}
+        </div>
+        <router-link :to="`/prod/${product.productname}`" style="margin-top: 200px; margin-left: 100px;">
+          <img :src="product.productimage" style="margin-left: 420px; margin-top: 150px; width: 340px; height: 500px;" />
+        </router-link>
+        <div class="subdivproduct" style="margin-left: 520px; margin-top: 15px; font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif'; color: rgb(134, 134, 134); font-size: 15px;">
+          <h6>{{ product.productname }}</h6>
+          <h5>{{ product.productprice }}</h5>
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
   <script lang="ts">
   import { ref, reactive, onMounted } from 'vue';
@@ -97,5 +100,13 @@ import { routeLocationKey } from 'vue-router';
 .Product_image_tri{
     width: 100%;
 }
-
+.subsubcategories {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 550px;
+  text-align: center;
+  font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif';
+  color: rgb(134, 134, 134);
+  font-size: 15px;
+}
   </style>
