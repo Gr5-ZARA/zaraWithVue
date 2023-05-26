@@ -60,9 +60,6 @@ export default defineComponent({
     addCart(){
 
     },
-    goToHome(){
-      this.$router.push({name:'home'})
-    },
     async handleSubmit() {
       try {
         const user: User = {
@@ -78,7 +75,7 @@ export default defineComponent({
         console.log(res.data)
         window.localStorage.setItem('User', JSON.stringify(res.data));
         this.Error = 'Authentication successful';
-        this.goToHome()
+        window.location.replace('/')
         
       } catch (err) {
         console.log(err);

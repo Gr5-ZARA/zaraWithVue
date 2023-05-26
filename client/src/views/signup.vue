@@ -73,9 +73,9 @@ export default defineComponent({
     };
   },
   methods: {
-    // goToMakeCart(){
-    //   this.$router.push({name:'MakeCart'})
-    // },
+    goToLogin(){
+      this.$router.push({name:'login'})
+    },
     async handleSubmit() {
       const newUser = {
         username: this.username,
@@ -89,9 +89,7 @@ export default defineComponent({
             'Content-Type': 'application/json',
           },
         });
-        console.log(res.data)
-        // const res=await axios.get(`http://localhost:5000/api/user`)
-        // this.goToMakeCart()
+        this.goToLogin()
       } catch (error) {
         console.error(error);
       }
