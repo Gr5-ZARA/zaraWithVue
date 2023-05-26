@@ -1,24 +1,27 @@
 <template>
-    <div>
-      <div v-if="products.length > 0">
-        <div v-for="(product, index) in products" :key="index">
-          <router-link :to="`/prod/${product.productname}`" style="margin-top: 200px; margin-left: 100px;">
-            <img :src="product.productimage" style="margin-left: 420px; margin-top: 150px; width: 340px; height: 500px;" />
-          </router-link>
-          <div class="subdivproduct" style="margin-left: 520px; margin-top: 15px; font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif'; color: rgb(134, 134, 134); font-size: 15px;">
-            <h6>{{ product.productname }}</h6>
-            <h5 style="margin-left:100px">{{ product.productprice }}$</h5>
-          </div>
+  <div>
+    <div v-if="products.length > 0">
+      <div v-for="(product, index) in products" :key="index">
+        <div class="subsubcategories">
+          {{ product['productsub-sub-category'] }}
+        </div>
+        <router-link :to="`/prod/${product.productname}`" style="margin-top: 200px; margin-left: 100px;">
+          <img :src="product.productimage" style="margin-left: 420px; margin-top: 150px; width: 340px; height: 500px;" />
+        </router-link>
+        <div class="subdivproduct" style="margin-left: 520px; margin-top: 15px; font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif'; color: rgb(134, 134, 134); font-size: 15px;">
+          <h6>{{ product.productname }}</h6>
+          <h5>{{ product.productprice }}</h5>
+        </div>
       </div>
     </div>
   </div>
 </template>
   
   <script lang="ts">
-  import { ref, onMounted } from 'vue';
+  import { ref, reactive, onMounted } from 'vue';
   // import router from '@/router';
   import axios from 'axios';
-
+import { routeLocationKey } from 'vue-router';
   
   interface Product {
     productid: number;
@@ -37,6 +40,7 @@
     setup() {
       var category = ref('');
       var products = ref<Product[]>([]);
+      
       onMounted(async () => {
         // category.value=route.params.id
         category.value = window.location.pathname.split('/')[2];
@@ -52,6 +56,8 @@
         }
       });
   
+      console.log(category.value, 'this is 2');
+  
       return {
         category,
         products,
@@ -64,7 +70,7 @@
   .subdivproduct{
     display: flex;
     font-size: 70%;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     color: black;
     text-decoration: none;
 
