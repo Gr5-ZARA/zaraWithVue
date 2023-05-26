@@ -193,10 +193,10 @@ a {
 
 .centerimgprod{ 
         height: 600px;
-       width: 400px;
+        width: 400px;
         display: block;
         margin-left: auto;
-        margin-right: auto;  
+        margin-right:auto;  
 }
 
 .img1{
