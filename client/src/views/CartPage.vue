@@ -1,20 +1,21 @@
 <template>
-    <div>
-      <div id="cartPage">
-        <Cart/>
-      </div>
+  <div>
+    <div id="cartPage">
+      <Cart />
     </div>
-  </template>
-  
-  <script lang="ts">
-  import { defineComponent } from 'vue';
-  import Cart from './Cart.vue';
-  
-  export default defineComponent({
-    name: 'CartPage',
-    components: {
-      Cart,
-    },
-  });
-  </script>
-  
+  </div>
+</template>
+
+<script lang="ts">
+import Cart from './Cart.vue';
+
+export default {
+  components: {
+    Cart,
+  },
+};
+</script>
+
+<style>
+/* Add your styles here */
+</style>
