@@ -9,10 +9,10 @@
             <h6>{{ product.productname }}</h6>
             <h5 style="margin-left:100px">{{ product.productprice }}$</h5>
           </div>
-        </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
   
   <script lang="ts">
   import { ref, onMounted } from 'vue';
@@ -94,5 +94,13 @@
 .Product_image_tri{
     width: 100%;
 }
-
+.subsubcategories {
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 550px;
+  text-align: center;
+  font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif';
+  color: rgb(134, 134, 134);
+  font-size: 15px;
+}
   </style>

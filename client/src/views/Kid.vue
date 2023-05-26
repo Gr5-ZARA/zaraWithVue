@@ -4,6 +4,7 @@
       <router-link :to="`/products/${product['productsub-category']}`">
         {{ product['productsub-category'] }}
       </router-link>
+     
     </h2>
   </div>
 </template>
