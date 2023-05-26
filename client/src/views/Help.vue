@@ -26,8 +26,6 @@
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000'; // Replace with the correct base URL of your backend server
-
 interface Question {
   id: number;
   question: string;
@@ -47,7 +45,7 @@ export default defineComponent({
 
     const handleSearchChange = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/help`, {
+        const response = await axios.get(`http://localhost:5000/api/help`, {
           params: {
             searchTerm: searchText.value
           }
@@ -60,12 +58,12 @@ export default defineComponent({
 
     const handleResultClick = async (result: Question) => {
       try {
-        const response = await axios.get(`${BASE_URL}/api/help/${result.id}`);
+        const response = await axios.get(`http://localhost:5000/api/help/${result.id}`);
         selectedQuestion.value = {
           question: result.question,
           answer: response.data.answer
         };
-        searchResults.value = []; // Clear the searchResults array to hide the dropdown
+        searchResults.value = [];
       } catch (error) {
         console.error(error);
       }
