@@ -7,7 +7,7 @@
           </router-link>
           <div class="subdivproduct" style="margin-left: 520px; margin-top: 15px; font-family: 'Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif'; color: rgb(134, 134, 134); font-size: 15px;">
             <h6>{{ product.productname }}</h6>
-            <h5>{{ product.productprice }}</h5>
+            <h5 style="margin-left:100px">{{ product.productprice }}$</h5>
           </div>
         </div>
       </div>
@@ -15,10 +15,10 @@
   </template>
   
   <script lang="ts">
-  import { ref, reactive, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue';
   // import router from '@/router';
   import axios from 'axios';
-import { routeLocationKey } from 'vue-router';
+
   
   interface Product {
     productid: number;
@@ -37,7 +37,6 @@ import { routeLocationKey } from 'vue-router';
     setup() {
       var category = ref('');
       var products = ref<Product[]>([]);
-      
       onMounted(async () => {
         // category.value=route.params.id
         category.value = window.location.pathname.split('/')[2];
@@ -53,8 +52,6 @@ import { routeLocationKey } from 'vue-router';
         }
       });
   
-      console.log(category.value, 'this is 2');
-  
       return {
         category,
         products,
@@ -67,7 +64,7 @@ import { routeLocationKey } from 'vue-router';
   .subdivproduct{
     display: flex;
     font-size: 70%;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     color: black;
     text-decoration: none;
 
