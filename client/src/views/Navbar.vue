@@ -112,8 +112,12 @@
                 <Beauty />
               </div>
               <div id="menuExtraOptions">
-                
+                <ul>
+                  <li>JOIN LIFE</li>
+                  <li>+ INFO</li>
+                </ul>
               </div>
+
             </ul>
           </div>
        
