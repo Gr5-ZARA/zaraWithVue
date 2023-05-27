@@ -10,10 +10,10 @@
     />
 
     <div v-if="filteredItems.length > 0">
-      <div v-for="result in filteredItems" :key="result.productId">
+      <div v-for="result in filteredItems" :key="result.productId" class="product-item">
         <img :src="result.productimage" alt="image" style="width: 230px; height: 350px" />
-        <div>Product Name: {{ result.productname }}</div>
-        <div>Product Price: {{ result.productprice }}</div>
+        <div class="product-name">{{ result.productname }}</div>
+        <div class="product-price">{{ result.productprice }} TND</div>
       </div>
     </div>
     <div v-else-if="search !== ''">
@@ -90,7 +90,25 @@ export default {
 }
 
 .searchbar::placeholder {
-  color: rgb(30, 80, 95);
+  color: rgb(95, 95, 95);
   margin-bottom: 20px;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.product-name {
+  font-family: 'Neue Helvetica', Helvetica, Arial, Lucida Grande, sans-serif;
+  font-size: 11px;
+}
+
+.product-price {
+  font-family: 'Neue Helvetica', Helvetica, Arial, Lucida Grande, sans-serif;
+  font-size: 11px;
+  text-align: right;
 }
 </style>
