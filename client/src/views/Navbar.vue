@@ -112,7 +112,7 @@
               <div id="menuExtraOptions">
                 <ul>
                   <li>JOIN LIFE</li>
-                  <li>+ INFO</li>
+                  <li v-if="storedData">{{ JSON.parse(storedData).user.isAdmin }}</li>
                 </ul>
               </div>
 
@@ -148,10 +148,12 @@ export default defineComponent({
     
 },
     setup() {
-      const router=useRouter()
       const isMenuOpen = ref(false);
       const display = ref('');
       const storedData=window.localStorage.getItem('User')
+      // if(storedData){
+      //   const parseData=JSON.parse(storedData)
+      // }
       const toggleMenu = () => {
         isMenuOpen.value = !isMenuOpen.value;
       };

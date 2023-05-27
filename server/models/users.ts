@@ -12,10 +12,7 @@ export interface User {
 const db = {
   getAll(callback: (error: Error | null, result: any[] | null) => void) {
     const sql = `SELECT * FROM users`;
-    connection.query(sql, function (err, result: any[] | null) {
-      console.log(err);
-      callback(err, result);
-    });
+    connection.query(sql,callback);
   },
   signUp(user: User, callback: (error: Error | null, result: any) => void) {
     const sql = `INSERT INTO users SET ?`;
