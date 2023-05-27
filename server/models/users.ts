@@ -6,6 +6,7 @@ export interface User {
   userlastname: string;
   useremail: string;
   userpw: string;
+  isAdmin:number
 }
 
 const db = {

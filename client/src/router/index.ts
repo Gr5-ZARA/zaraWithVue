@@ -8,6 +8,9 @@ import product from '../views/product.vue'
 import Help from '../views/Help.vue'
 import prod from '@/views/prod.vue'
 import Cart from '../views/cart.vue'
+import AddProduct from '@/views/AddProduct.vue'
+import AllUsers from '@/views/AllUsers.vue'
+import AllProducts from '@/views/AllProducts.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,6 +61,21 @@ const router = createRouter({
       path:'/cart',
       name:"cart",
       component:Cart
+    },
+    {
+      path:'/addProduct',
+      name:"AddProduct",
+      component:AddProduct
+    },
+    {
+      path:'/allUsers',
+      name:"AllUsers",
+      component:AllUsers
+    },
+    {
+      path:'/allProducts',
+      name:'AllProducts',
+      component:AllProducts
     }
   ]
 })

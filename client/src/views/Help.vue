@@ -87,39 +87,38 @@ export default defineComponent({
   align-items: center;
   background-image: url('https://static.zara.net/photos///contents/mkt/spots/ss23-help-customer/subhome-xmedia-10-north//w/1839/IMAGE-landscape-web-27470945-8c31-433a-9eaf-392114b6a91d-default_0.jpg?ts=1682518360676');
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 300px;
+  padding-left: 20px; 
 }
 
 .head {
-  margin-right: 1000px;
-  margin-top: -120px;
+  margin-bottom: 20px;
   font-family: 'Neue Helvetica', Arial, sans-serif;
 }
 
 .searchbar {
-  margin-top: 1.6em;
   width: 40%;
   outline: none;
   border: none;
   border-bottom: 1px solid rgb(8, 8, 8);
   padding: 0.2em 0em;
-  margin-left: -650px;
   background: none;
   font-family: 'Neue Helvetica', Arial, sans-serif;
 }
 
 .dropdown {
-  position: absolute;
-  margin-top: 2px;
+  position: relative;
+  margin-top: 10px;
   padding: 0;
   list-style: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  border: none;
   max-height: 200px;
   overflow-y: auto;
   z-index: 10;
@@ -136,13 +135,13 @@ export default defineComponent({
 }
 
 .selected-question {
-  margin-right: 1000px;
-  margin-top: 200px;
+  margin-top: 20px;
   font-family: 'Neue Helvetica', Arial, sans-serif;
 }
 
 .answer {
-  margin-top: 0px;
+  font-size: medium;
+  margin-top: 10px;
   font-family: 'Neue Helvetica', Arial, sans-serif;
 }
 </style>
