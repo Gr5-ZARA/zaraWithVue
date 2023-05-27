@@ -1,4 +1,3 @@
-
 <template >
     <header style="width: 100%;padding: 12px 24px 20px 24px;position: fixed;position:fixed;"
           
@@ -54,12 +53,13 @@
             <RouterLink
               to="/cart"
               style="text-decoration: none; padding: 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
-              v-if="storedData"
+              v-if="parseData"
               >
               <img
                 style= "width: 22px; height: 19px;"
                 src="https://cdn-icons-png.flaticon.com/512/3110/3110065.png"
                 alt="Cart"
+                v-if="parseData.user[0].isAdmin===0"
               />
             </RouterLink>
           </div>
@@ -112,20 +112,22 @@
               <div id="menuExtraOptions">
                 <ul>
                   <li>JOIN LIFE</li>
-                  <li v-if="storedData">{{ JSON.parse(storedData).user.isAdmin }}</li>
+                   <li v-if="parseData"><RouterLink to="/addProduct" v-if="parseData.user[0].isAdmin>0">Add Product</RouterLink></li>
+                   <li v-if="parseData"><RouterLink to="/allProducts" v-if="parseData.user[0].isAdmin>0">Show All Products</RouterLink></li>
+                   <li v-if="parseData"><RouterLink to="/allUsers" v-if="parseData.user[0].isAdmin>0">Show All Users</RouterLink></li>
                 </ul>
               </div>
 
-            </ul>
-          </div>
-       
+          </ul>
         </div>
      
       </div>
-     
+   
     </div>
-  </header>
-  
+   
+  </div>
+</header>
+
 </template>
 
 <script lang="ts">
@@ -138,22 +140,24 @@ import Beauty from './Beauty.vue';
 import HomeView from './HomeView.vue';
 
 export default defineComponent({
-  name: 'Header',
-  components: {
-    Woman,
-    Men,
-    Kid,
-    Beauty,
-    HomeView
-    
+name: 'Header',
+components: {
+  Woman,
+  Men,
+  Kid,
+  Beauty,
+  HomeView
+  
 },
     setup() {
+      const router=useRouter()
       const isMenuOpen = ref(false);
       const display = ref('');
       const storedData=window.localStorage.getItem('User')
-      // if(storedData){
-      //   const parseData=JSON.parse(storedData)
-      // }
+      var parseData;
+      if(storedData){
+        parseData=JSON.parse(storedData)
+      }
       const toggleMenu = () => {
         isMenuOpen.value = !isMenuOpen.value;
       };
@@ -170,6 +174,7 @@ export default defineComponent({
         isMenuOpen,
         display,
         storedData,
+        parseData,
         toggleMenu,
         handleShow,
         logout
@@ -182,143 +187,143 @@ export default defineComponent({
 
 /* Header container */
 #headerContents {
-  
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  position: fixed;
+
+display: flex;
+justify-content: space-between;
+width: 100%;
+position: fixed;
 }
 
 /* Logo */
 #logo {
-  margin-left: 80px;
-  width: 212px;
+margin-left: 80px;
+width: 212px;
 }
 
 /* Menu icon */
 /* #menu {
-  
-  width: 30px;
-  height: 30px;
-  margin-right: 30px;
-  cursor: pointer;
+
+width: 30px;
+height: 30px;
+margin-right: 30px;
+cursor: pointer;
 } */
 
 /* Header right section */
 #headerRight {
-  width: 30%;
-  display: flex;
-  margin-right: 30px;
-  padding: 10px;
-  justify-content: space-between;
+width: 30%;
+display: flex;
+margin-right: 30px;
+padding: 10px;
+justify-content: space-between;
 }
 
 /* Header right links */
 
- #headerRightRight {
-  display: flex;
+#headerRightRight {
+display: flex;
 }  
 
 /* Header right link */
 .menuLink {
- 
-  text-decoration: none;
-  padding: 0px 10px;
-  font-size: 13px;
-  color: rgb(41, 41, 41);
-  font-weight: 100;
-  font-family: 'Neue-Helvetica', Helvetica, Arial, Sans-Serif;
-  font-stretch: ultra-condensed;
+
+text-decoration: none;
+padding: 0px 10px;
+font-size: 13px;
+color: rgb(41, 41, 41);
+font-weight: 100;
+font-family: 'Neue-Helvetica', Helvetica, Arial, Sans-Serif;
+font-stretch: ultra-condensed;
 }
 
 /* Cart icon */
 #cartIcon {
-  width: 22px;
-  height: 19px;
+width: 22px;
+height: 19px;
 }
 
 /* Menu modal */
 /* #menuModal {
-  position: fixed;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+position: fixed;
+overflow: hidden;
+background-color: rgba(0, 0, 0, 0.5);
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
 } */
 
 /* Menu content */
 .menuContent {
-  position: relative;
-  background-color: white;
-  width: 470px;
-  padding: 20px;
+position: relative;
+background-color: white;
+width: 470px;
+padding: 20px;
 }
 
 /* Close button */
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 21px;
-  color: rgb(106, 104, 104);
-  cursor: pointer;
-  
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 21px;
+color: rgb(106, 104, 104);
+cursor: pointer;
+
 }
 
 /* Menu options */
 /* #menuOptions {
-  position: relative;
-  overflow: hidden;
-  height: 4000px;
-  width: 470px;
-  background-color: white;
-  margin-top: -30px;
-  margin-left: -20px;
+position: relative;
+overflow: hidden;
+height: 4000px;
+width: 470px;
+background-color: white;
+margin-top: -30px;
+margin-left: -20px;
 } */
 
 /* Menu options list */
 .menuOptionsList {
-  display: flex;
-  flex-direction: column;
-  margin-top: 90px;
-  margin-bottom: 25px;
+display: flex;
+flex-direction: column;
+margin-top: 90px;
+margin-bottom: 25px;
 }
 
 /* Menu option */ 
 /* .menuOption {
-  margin-left: -10px;
-  margin-top: -40px;
-  font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-  color: grey;
-  font-size: 11px;
-  cursor: pointer;
+margin-left: -10px;
+margin-top: -40px;
+font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+color: grey;
+font-size: 11px;
+cursor: pointer;
 } */
 
 /* Active menu option */
 .menuOption.active {
-  color: black;
+color: black;
 }
 
 /* Extra options */
 #menuExtraOptions ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+list-style: none;
+margin: 0;
+padding: 0;
 }
 
 /* Extra options list item */
 #menuExtraOptions ul li {
-  margin-top: 10px;
+margin-top: 10px;
 }
 .menuOption {
-    text-decoration: none !important;
-    cursor: default !important;
-     color: grey; 
-    font-size: x-small;
-  }
+  text-decoration: none !important;
+  cursor: default !important;
+   color: grey; 
+  font-size: x-small;
+}
 </style>

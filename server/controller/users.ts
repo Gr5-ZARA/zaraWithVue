@@ -5,9 +5,9 @@ import jwt, { Secret } from 'jsonwebtoken';
 import connection from '../connection';
 
 const getUser = (req: Request, res: Response) => {
-  user.getAll((err,result)=>{
-    if(err) res.json(err)
-    res.json(result)
+  user.getAll((err: Error | null, results: any[] | null) => {
+    if (err) res.status(500).send(err);
+    else res.send(results);
   });
 };
 
