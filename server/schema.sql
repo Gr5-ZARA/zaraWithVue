@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `zara`.`products` (
   `productsub-category` VARCHAR(255) NOT NULL,
   `productsub-sub-category` VARCHAR(255) NOT NULL,
   `productimage` VARCHAR(400) NOT NULL,
-  `subsubimage` VARCHAR(400) NOT NULL,
+  
   `orderid` INT NOT NULL,
   PRIMARY KEY (`productid`),
   INDEX (`orderid` ASC) VISIBLE,
@@ -86,7 +86,7 @@ VALUES
   (UNIX_TIMESTAMP(), 1),
   (UNIX_TIMESTAMP(), 2);
 
-INSERT INTO `products` (`productname`, `productprice`, `productquantity`, `productcolor`, `productcategory`, `productsub-category`, `productsub-sub-category`, `productimage`,`subsubimage`, `orderid`) 
+INSERT INTO `products` (`productname`, `productprice`, `productquantity`, `productcolor`, `productcategory`, `productsub-category`, `productsub-sub-category`, `productimage`, `orderid`) 
 VALUES 
   ('SHAWL LAPEL BLAZER', 299, 10, 'BLACK', 'Woman', 'BLAZER', 'OVERSIZE', 'https://static.zara.net/photos///2023/V/0/1/p/2761/240/800/15/w/730/2761240800_2_1_1.jpg?ts=1672608969680', 1),
   ('TRF WIDE-LEG MID-RISE EXTRA-LONG JEANS',149,9,'LIGHT BLUE','Woman','JEANS','Wide-leg','https://static.zara.net/photos///2023/V/0/1/p/6688/029/406/13/w/430/6688029406_1_1_1.jpg?ts=1679502261590',2),
