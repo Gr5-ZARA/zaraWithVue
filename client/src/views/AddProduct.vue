@@ -1,5 +1,5 @@
 <template class="add">
-    <div >
+    <div class="add-form">
         <input type="text" placeholder="Product Name" name="productname" v-model="productname"/><br/>
         <input type="text" placeholder="Product Image" name="productimage" v-model="productimage"/><br/>
         <input type="number" placeholder="price" name="productprice" v-model="productprice"/><br/>
@@ -8,7 +8,7 @@
         <input type="text" placeholder="category" name="productcategory" v-model="productcategory"/><br/>
         <input type="text" placeholder="sub-category" name="productsub-category" v-model="productsubcategory"/><br/>
         <input type="text" placeholder="sub-sub-category" name="productsub-sub-category" v-model="productsubsubcategory"/><br/>
-        <button @click="handleSubmit">Add Product</button>
+        <button class="add-button" @click="handleSubmit">Add Product</button>
     </div>
 </template>
 
@@ -56,8 +56,12 @@ import { useRouter } from 'vue-router';
 </script>
 
 <style>
-    .add{
-        top: 400px;
-        left: 600px;
-    }
+.add-form {
+    margin-top: 200px;
+    margin-left: 120px;
+}
+.add-button{
+    margin-top: 30px;
+    margin-left: 650px;
+}
 </style>
