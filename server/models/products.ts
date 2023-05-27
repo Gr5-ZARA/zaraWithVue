@@ -78,29 +78,11 @@ export const createProduct = (product: any) => {
 };
 
 
-export const changeProduct=(id: any, order: any) => {
-  return new Promise((resolve, reject) => {
-    const sql = `UPDATE products SET ? WHERE productid=${id}`;
-    con.query(sql, order, (err, rslt) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(rslt);
-      }
-    });
-  });
+export const changeProduct=(values:any,callback:any) => {
+    con.query(`UPDATE products SET productname=?,productprice=?,productquantity=?,productcolor=?,productcategory=?,productsub-category=?,productsub-sub-category=?,productimage=? WHERE productid=?`,values,callback)
 };
 
-export const deleteProduct = (id: any) => {
-  return new Promise((resolve, reject) => {
-    const sql = `DELETE FROM products WHERE WHERE productid=${id}`;
-    con.query(sql, (err, rslt) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(rslt);
-      }
-    });
-  });
+export const deleteProduct = (values:any,callback:any) => {
+  con.query('DELETE FROM products WHERE productid=?',values,callback)
 };
 

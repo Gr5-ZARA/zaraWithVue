@@ -79,22 +79,16 @@ import {
       });
   };
   export const updateProd = (req: Request, res: Response) => {
-    changeProduct(req.params.id,req.body)
-      .then((result: any) => {
-        res.status(200).send(result);
-      })
-      .catch((error: any) => {
-        res.status(404).send(error);
-      });
+    changeProduct([req.body.productname,req.body.productprice,req.body.productquantity,req.body.productcolor,req.body.productcategory,req.body["productsub-category"],req.body["productsub-sub-category"],req.body.productimage,Number(req.params.id)],(err:any,result:any)=>{
+      if(err) res.json(err);
+      res.json('updated')
+    });
   };
   export const delProd = (req: Request, res: Response) => {
-    deleteProduct(req.params)
-      .then((result: any) => {
-        res.status(204).send(result);
-      })
-      .catch((error: any) => {
-        res.status(500).send(error);
-      });
+    deleteProduct([req.params.id],(err :any,result:any)=>{
+      if(err) res.json(err);
+      res.json('deleted')
+    })
   };
 
 
