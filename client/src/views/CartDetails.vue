@@ -12,6 +12,7 @@
       <div class="sm-col sm-col-6">
         <div class="details p2">
           <a class="blue text-decoration-none" href="#!"></a>
+          <button @click="deleteCart" class="delete-button">Delete</button>
         </div>
       </div>
     </div>
@@ -26,9 +27,18 @@ export default {
       required: true,
     },
   },
+  methods: {
+  deleteCart() {
+    // Emit the custom 'delete' event and pass the product's orderid as the payload
+    this.$emit('delete', this.product.orderid);
+  },
+},
 };
 </script>
 
 <style>
-/* Add your styles here */
+.delete-button {
+  margin-top: 10px;
+}
+/* Add your additional styles here */
 </style>
