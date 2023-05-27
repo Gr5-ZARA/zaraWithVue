@@ -43,8 +43,19 @@ import {
         res.status(500).send(error);
       });
   };
+  // export const delOrder = (req: Request, res: Response) => {
+  //   deleteOrder(req.params)
+  //     .then((result: any) => {
+  //       res.status(204).send(result);
+  //     })
+  //     .catch((error: any) => {
+  //       res.status(500).send(error);
+  //     });
+  // };
+
   export const delOrder = (req: Request, res: Response) => {
-    deleteOrder(req.params)
+    const orderId = req.params.id;
+    deleteOrder(orderId)
       .then((result: any) => {
         res.status(204).send(result);
       })
@@ -52,7 +63,6 @@ import {
         res.status(500).send(error);
       });
   };
-
 
 
 

@@ -1,5 +1,8 @@
-<template class="add">
-    <div class="add-form">
+
+<template >
+    <div class="add-container">
+
+
         <input type="text" placeholder="Product Name" name="productname" v-model="productname"/><br/>
         <input type="text" placeholder="Product Image" name="productimage" v-model="productimage"/><br/>
         <input type="number" placeholder="price" name="productprice" v-model="productprice"/><br/>
@@ -55,13 +58,29 @@ import { useRouter } from 'vue-router';
     })
 </script>
 
-<style>
-.add-form {
-    margin-top: 200px;
-    margin-left: 120px;
+
+
+    <style>
+    .add-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height:110vh;
+    }
+
+    .add-button {
+    padding: 10px 20px;
+    background-color: #a5ada5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
-.add-button{
-    margin-top: 30px;
-    margin-left: 650px;
+
+.add-button:hover {
+    background-color: #535e53;
 }
 </style>
+
