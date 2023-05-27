@@ -20,6 +20,7 @@ const signupUser = async (req: Request, res: Response) => {
       useremail: req.body.useremail,
       userlastname: req.body.userlastname,
       userpw: hashedPassword,
+      isAdmin:req.body.isAdmin
     };
 
     user.signUp(newUser, (err, results) => {

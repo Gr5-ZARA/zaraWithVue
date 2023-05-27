@@ -54,7 +54,8 @@
             <RouterLink
               to="/cart"
               style="text-decoration: none; padding: 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
-            >
+              v-if="storedData"
+              >
               <img
                 style= "width: 22px; height: 19px;"
                 src="https://cdn-icons-png.flaticon.com/512/3110/3110065.png"
