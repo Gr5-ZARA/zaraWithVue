@@ -1,11 +1,6 @@
 
 <template >
-    <header style="
-          width: '100%';
-          padding: '12px 24px 20px 24px';
-          position: 'fixed';
-          margin: '0px';
-          position:fixed;"
+    <header style="width: 100%;padding: 12px 24px 20px 24px;position: fixed;position:fixed;"
           
         >
       <div id="headerContents" >
@@ -40,11 +35,13 @@
             </RouterLink>
           </div>
           <div id="headerRightRight">
+            <span class="menuLink" v-if="storedData" style=" font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;" @click="logout">LOG OUT</span>
             <RouterLink
-              to="/login"
-              style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
+            to="/login" style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
+            
+            v-else
             >
-              <span class="menuLink">LOG IN</span>
+              <span class="menuLink" >LOG IN</span>
             </RouterLink>
   
             <RouterLink
@@ -117,6 +114,7 @@
                   <li>+ INFO</li>
                 </ul>
               </div>
+
             </ul>
           </div>
        
@@ -130,7 +128,7 @@
 </template>
 
 <script lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView ,useRouter} from 'vue-router'
 import { defineComponent, ref } from 'vue';
 import Woman from './Woman.vue';
 import Men from './Men.vue';
@@ -149,13 +147,18 @@ export default defineComponent({
     
 },
     setup() {
+      const router=useRouter()
       const isMenuOpen = ref(false);
       const display = ref('');
-      
+      const storedData=window.localStorage.getItem('User')
       const toggleMenu = () => {
         isMenuOpen.value = !isMenuOpen.value;
       };
-      
+      const logout=()=>{
+        console.log('clicked')
+        window.localStorage.removeItem('User')
+        window.location.replace('/')
+      }
       const handleShow = (option:any  ) => {
         display.value = option;
       };
@@ -163,8 +166,10 @@ export default defineComponent({
       return {
         isMenuOpen,
         display,
+        storedData,
         toggleMenu,
-        handleShow
+        handleShow,
+        logout
       };
     }
 });

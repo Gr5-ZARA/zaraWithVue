@@ -73,6 +73,9 @@ export default defineComponent({
     };
   },
   methods: {
+    goToLogin(){
+      this.$router.push({name:'login'})
+    },
     async handleSubmit() {
       const newUser = {
         username: this.username,
@@ -81,13 +84,12 @@ export default defineComponent({
         userpw: this.userpw,
       };
       try {
-        const res = await axios.post('http://localhost:5000/api/user/signup', newUser, {
+         const res=await axios.post('http://localhost:5000/api/user/signup', newUser, {
           headers: {
             'Content-Type': 'application/json',
           },
         });
-        window.localStorage.setItem('User', JSON.stringify(res.data));
-        window.location.href = '/';
+        this.goToLogin()
       } catch (error) {
         console.error(error);
       }

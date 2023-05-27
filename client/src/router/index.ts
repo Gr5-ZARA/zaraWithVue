@@ -7,6 +7,8 @@ import Search from '../views/Search.vue'
 import product from '../views/product.vue'
 import Help from '../views/Help.vue'
 import prod from '@/views/prod.vue'
+import Cart from '../views/cart.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -51,6 +53,11 @@ const router = createRouter({
       path:'/products/:subcategory',
       name:'subcategory',
       component:product
+    },
+    {
+      path:'/cart',
+      name:"cart",
+      component:Cart
     }
   ]
 })
