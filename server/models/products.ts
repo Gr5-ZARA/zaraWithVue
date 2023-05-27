@@ -93,7 +93,7 @@ export const changeProduct=(id: any, order: any) => {
 
 export const deleteProduct = (id: any) => {
   return new Promise((resolve, reject) => {
-    const sql = `DELETE FROM products WHERE WHERE productid=${id}`;
+    const sql = `DELETE FROM products WHERE productid=${id}`;
     con.query(sql, (err, rslt) => {
       if (err) {
         reject(err);

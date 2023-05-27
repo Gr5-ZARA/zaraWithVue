@@ -1,5 +1,8 @@
+
 <template >
     <div class="add-container">
+
+
         <input type="text" placeholder="Product Name" name="productname" v-model="productname"/><br/>
         <input type="text" placeholder="Product Image" name="productimage" v-model="productimage"/><br/>
         <input type="number" placeholder="price" name="productprice" v-model="productprice"/><br/>
@@ -56,6 +59,7 @@ import { useRouter } from 'vue-router';
 </script>
 
 
+
     <style>
     .add-container {
         display: flex;
@@ -79,3 +83,4 @@ import { useRouter } from 'vue-router';
     background-color: #535e53;
 }
 </style>
+
