@@ -108,10 +108,10 @@ VALUES
   ('Do you offer international shipping?', 'Yes, we offer international shipping to select countries. Please check our website for the list of countries.'),
   ('How can I contact customer support?', 'You can contact our customer support team by emailing isleem.azouuz@gmail.com or calling our toll-free number.');
 
-INSERT INTO `users` (`username`, `userlastname`, `useremail`, `userpw`,`isAdmin`) 
-VALUES 
-  ('tarek', 'issaoui', 'tarek@gmail.com', 'password123',1),
-  ('islem', 'azouz', 'islem@gmail.com', 'password456',1);
+-- INSERT INTO `users` (`username`, `userlastname`, `useremail`, `userpw`,`isAdmin`) 
+-- VALUES 
+--   ('tarek', 'issaoui', 'tarek@gmail.com', 'password123',1),
+--   ('islem', 'azouz', 'islem@gmail.com', 'password456',1);
 
   -- Inserting orders
 INSERT INTO `orders` (`orderdate`, `userid`) 

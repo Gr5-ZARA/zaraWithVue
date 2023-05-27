@@ -82,6 +82,7 @@ export default defineComponent({
         userlastname: this.userlastname,
         useremail: this.useremail,
         userpw: this.userpw,
+        isAdmin:0
       };
       try {
          const res=await axios.post('http://localhost:5000/api/user/signup', newUser, {
