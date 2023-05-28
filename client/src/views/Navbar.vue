@@ -27,7 +27,9 @@
           </RouterLink>
         </div>
         <div id="headerRightRight">
-          <span class="menuLink" v-if="storedData" style=" font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;" @click="logout">LOG OUT</span>
+          <span  v-if="storedData" style=" font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;padding: 6px 10px 0px 10px;" @click="logout">
+            LOG OUT
+          </span>
           <RouterLink
           to="/login" style="text-decoration: none; padding: 0px 10px 0px 10px; font-size: 13px; color: rgb(41, 41, 41); font-weight: 100; font-family: Neue-Helvetica, Helvetica, Arial, Sans-Serif; font-stretch: ultra-condensed;"
           
@@ -105,7 +107,6 @@
                 <li>JOIN LIFE</li>
                  <li v-if="parseData"><RouterLink to="/addProduct" v-if="parseData.user[0].isAdmin>0">Add Product</RouterLink></li>
                  <li v-if="parseData"><RouterLink to="/allProducts" v-if="parseData.user[0].isAdmin>0">Show All Products</RouterLink></li>
-                 <li v-if="parseData"><RouterLink to="/allUsers" v-if="parseData.user[0].isAdmin>0">Show All Users</RouterLink></li>
               </ul>
             </div>
 

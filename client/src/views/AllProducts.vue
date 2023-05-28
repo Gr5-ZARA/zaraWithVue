@@ -52,7 +52,7 @@
             <td>{{ product['productsub-category'] }}</td>
             <td>{{ product['productsub-sub-category'] }}</td>
             <td><input type="text" v-model="product.productimage"></td>
-            <td><button @click="editProduct(product.productid,product)">update</button></td>
+            <td><button @click="editProduct(product.productid,product)" class="edit-button">update</button></td>
             </tr>
         </tbody>
       </table>
@@ -79,12 +79,6 @@
       return {
         products: [],
         show:false,
-        productname:'',
-        productprice:'',
-        productquantity:'',
-        productcategory:'',
-        productimage:'',
-        productcolor:''
       };
     },
     mounted() {

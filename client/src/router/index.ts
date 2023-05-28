@@ -3,13 +3,11 @@ import HomeView from "../views/HomeView.vue"
 import Login from '@/views/Login.vue'
 import Signup from '../views/Signup.vue'
 import Search from '../views/Search.vue'
-// import Men from '../views/Men.vue'
 import product from '../views/product.vue'
 import Help from '../views/Help.vue'
 import prod from '@/views/prod.vue'
 import Cart from '../views/cart.vue'
 import AddProduct from '@/views/AddProduct.vue'
-import AllUsers from '@/views/AllUsers.vue'
 import AllProducts from '@/views/AllProducts.vue'
 
 const router = createRouter({
@@ -66,11 +64,6 @@ const router = createRouter({
       path:'/addProduct',
       name:"AddProduct",
       component:AddProduct
-    },
-    {
-      path:'/allUsers',
-      name:"AllUsers",
-      component:AllUsers
     },
     {
       path:'/allProducts',
