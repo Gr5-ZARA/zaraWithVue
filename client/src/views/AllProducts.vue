@@ -16,8 +16,8 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="product in products" :key="product.productid">
+        <tbody v-for="product in products" :key="product.productid">
+          <tr >
             <td>{{ product.productid }}</td>
             <td>{{ product.productname }}</td>
             <td>{{ product.productprice }} TND</td>
@@ -34,26 +34,57 @@
               />
             </td>
             <td>
-              <button class="edit-button" @click="editProduct(product)">
+              <button class="edit-button" @click="handleShow">
                 Edit
               </button>
-              <button class="delete-button" @click="deleteProduct(product)">
+              <button class="delete-button" @click="deleteProduct(product.productid)">
                 Delete
               </button>
             </td>
           </tr>
+          <tr v-if="show">
+            <td>{{ product.productid }}</td>
+            <td><input type="text" v-model="product.productname" ></td>
+            <td><input type="number" v-model="product.productprice"></td>
+            <td><input type="number" v-model="product.productquantity"></td>
+            <td><input type="text" v-model="product.productcolor"></td>
+            <td><input type="text" v-model="product.productcategory"></td>
+            <td>{{ product['productsub-category'] }}</td>
+            <td>{{ product['productsub-sub-category'] }}</td>
+            <td><input type="text" v-model="product.productimage"></td>
+            <td><button @click="editProduct(product.productid,product)">update</button></td>
+            </tr>
         </tbody>
       </table>
     </div>
   </template>
   
-  <script>
+  <script lang="ts">
   import axios from "axios";
-  
+  interface Product {
+  productid:number;
+  productname: string;
+  productprice: number;
+  productquantity: number;
+  productcolor: string;
+  productcategory: string;
+  'productsub-category': string;
+  'productsub-sub-category': string;
+  productimage: string;
+  orderid: number;
+}
   export default {
+    
     data() {
       return {
         products: [],
+        show:false,
+        productname:'',
+        productprice:'',
+        productquantity:'',
+        productcategory:'',
+        productimage:'',
+        productcolor:''
       };
     },
     mounted() {
@@ -70,12 +101,18 @@
             console.error(error);
           });
       },
-      editProduct(product) {
-        console.log("Editing product:", product);
+      async editProduct(id:number,productUpdated:Object) {
+        
+        await axios.put(`http://localhost:5000/api/products/${id}`,productUpdated);
+        location.reload()
       },
-      deleteProduct(product) {
-        console.log("Deleting product:", product);
+      async deleteProduct(id:number) {
+        await axios.delete(`http://localhost:5000/api/products/${id}`)
+        location.reload()
       },
+      handleShow(){
+        this.show=!this.show
+      }
     },
   };
   </script>
