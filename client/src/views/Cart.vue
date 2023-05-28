@@ -1,6 +1,13 @@
 <template>
-  <div>
-    <CartDetail v-for="product in products" :key="product.productid" :product="product" />
+  <div class="cart-container">
+   
+    <CartDetail
+  v-for="product in products"
+  :key="product.orderid"
+  :product="product"
+  @delete="deleteCartItem"
+  :delete-cart-item="deleteCartItem"
+/>
   </div>
 </template>
 
@@ -34,25 +41,45 @@ export default {
     }
   },
   methods: {
-    fetchData(orderId:any) {
-      axios
-        .get(`http://localhost:5000/api/products/${orderId}`)
-        .then((res) => {
-          this.products = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
+  fetchData(orderId: any) {
+    axios
+      .get(`http://localhost:5000/api/products/${orderId}`)
+      .then((res) => {
+        this.products = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
+ 
+  deleteCartItem(orderId:any) {
+    // Make a DELETE request to the backend API to delete the cart item
+    axios
+      .delete(`http://localhost:5000/api/orders/${orderId}`)
+      .then(() => {
+        // Fetch the updated data after deletion
+        this.fetchData(this.orderId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+},
   components: {
     CartDetail,
   },
+  
+
 };
 </script>
 
 <style>
-/* Add your styles here */
+.cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+}
 </style>
 
 

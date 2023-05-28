@@ -184,6 +184,14 @@ components: {
 </script>
 
 <style scoped>
+header {
+  width: 100%;
+  padding: 12px 24px 20px 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
 
 /* Header container */
 #headerContents {

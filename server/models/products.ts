@@ -79,7 +79,7 @@ export const createProduct = (product: any) => {
 
 
 export const changeProduct=(values:any,callback:any) => {
-    con.query(`UPDATE products SET productname=?,productprice=?,productquantity=?,productcolor=?,productcategory=?,productsub-category=?,productsub-sub-category=?,productimage=? WHERE productid=?`,values,callback)
+    con.query(`UPDATE products SET productname=?,productprice=?,productquantity=?,productcolor=?,productcategory=?,productimage=? WHERE productid=?`,values,callback)
 };
 
 export const deleteProduct = (values:any,callback:any) => {
