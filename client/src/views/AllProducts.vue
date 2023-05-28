@@ -37,7 +37,7 @@
               <button class="edit-button" @click="editProduct(product)">
                 Edit
               </button>
-              <button class="delete-button" @click="deleteProduct(product)">
+              <button class="delete-button" @click="deleteProduct(product.productid)">
                 Delete
               </button>
             </td>
@@ -47,9 +47,20 @@
     </div>
   </template>
   
-  <script>
+  <script lang="ts">
   import axios from "axios";
-  
+  interface Product {
+  productid:number;
+  productname: string;
+  productprice: number;
+  productquantity: number;
+  productcolor: string;
+  productcategory: string;
+  'productsub-category': string;
+  'productsub-sub-category': string;
+  productimage: string;
+  orderid: number;
+}
   export default {
     data() {
       return {
@@ -73,8 +84,9 @@
       editProduct(product) {
         console.log("Editing product:", product);
       },
-      deleteProduct(product) {
-        console.log("Deleting product:", product);
+      async deleteProduct(id:number) {
+        await axios.delete(`http://localhost:5000/api/products/${id}`)
+        location.reload()
       },
     },
   };

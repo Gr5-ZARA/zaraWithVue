@@ -79,7 +79,7 @@ import {
       });
   };
   export const updateProd = (req: Request, res: Response) => {
-    changeProduct([req.body.productname,req.body.productprice,req.body.productquantity,req.body.productcolor,req.body.productcategory,req.body["productsub-category"],req.body["productsub-sub-category"],req.body.productimage,Number(req.params.id)],(err:any,result:any)=>{
+    changeProduct([req.body.productname,req.body.productprice,req.body.productquantity,req.body.productcolor,req.body.productcategory,req.body.productimage,Number(req.params.id)],(err:any,result:any)=>{
       if(err) res.json(err);
       res.json('updated')
     });
