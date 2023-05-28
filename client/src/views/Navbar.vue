@@ -5,14 +5,7 @@
     <div id="headerContents" >
       <div id="headerLeft" style="display: flex ;">
         <div>
-          <input
-            type="image"
-            name="menu"
-            src="https://icon-library.com/images/menu-icon-png-3-lines/menu-icon-png-3-lines-14.jpg"
-            id="menu"
-            style="width: 30px; height: 30px; margin-right: 30px ; "
-            @click="toggleMenu"
-          />
+          <i class="fas fa-bars fa-xs" style="color: #black; font-size: 16px; margin-right: 10px; cursor: pointer;" @click="toggleMenu"></i>
         </div>
         <RouterLink to="/">
           <img
@@ -67,7 +60,7 @@
     </div>
     
     <div v-if="isMenuOpen" id="menuModal" class="menuOpacity animatedMenuShow">
-      <div class="menuContent">
+      <div class="menuContent" style="position: fixed; left: 0; right: auto; top: 0; bottom: 0; background-color: white; padding: 20px; width: 200px;">
         <header id="headerRight" style="width: 1000%; display: flex; margin-right: 30px; padding: 10px; justify-content: space-between;">
           <div id="menuTop"></div>
         </header>
@@ -77,9 +70,7 @@
       >
         <div id="menuMainOptions" style="display: flex;">
           <ul class="menuOptionsList">
-            <ul class="close" @click="toggleMenu" style="margin-right: 100px; margin-left: -41px; font-size: 21px; color: grey;">
-              ✕
-            </ul>
+            <i class="fas fa-times fa-sm" style="color: #a6a6a6; font-size: 21px; cursor: pointer;" @click="toggleMenu"></i>
             
             <div style="margin-top: 90px; display: flex; flex-wrap: wrap; margin-bottom: 25px;">
               <p class="menuOption" style="margin-left: -10px; margin-top: -40px; font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; color: grey; font-size: 11px; cursor: pointer;" @click="handleShow('woman')">
@@ -138,6 +129,8 @@ import Men from './Men.vue';
 import Kid from './Kid.vue';
 import Beauty from './Beauty.vue';
 import HomeView from './HomeView.vue';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 export default defineComponent({
 name: 'Header',
@@ -268,12 +261,13 @@ align-items: center;
 .menuContent {
 position: relative;
 background-color: white;
-width: 470px;
+width: 200px;
 padding: 20px;
 }
 
 /* Close button */
 .close {
+  margin-top: 100px;
 position: absolute;
 top: 10px;
 right: 10px;

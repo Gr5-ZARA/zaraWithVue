@@ -1,10 +1,12 @@
 <template>
-  <div class="slideshow-container">
-    <img
-      :src="currentImagePath"
-      :alt="`Slide ${activeIndex + 1}`"
-      style="height: 100%; width: 100%"
-    />
+  <div class="fullscreen-container">
+    <div class="slideshow-container">
+      <img
+        :src="currentImagePath"
+        :alt="`Slide ${activeIndex + 1}`"
+        class="fullscreen-image"
+      />
+    </div>
   </div>
 </template>
 
@@ -14,11 +16,11 @@ import { ref, onMounted } from "vue";
 export default {
   setup() {
     const imagePaths = [
-      "https://static.zara.net/photos///contents/mkt/spots/ss23-north-woman-new/subhome-xmedia-20//w/1366/IMAGE-landscape-fill-c858f95e-9272-423c-a1ee-40e7dfd5b638-default_0.jpg?ts=1684136380997",
-      "https://www.swaggermagazine.com/home/wp-content/uploads/2023/03/Zara-HomePage-Landscape_W-1.jpg",
-      "https://cache.marieclaire.fr/data/photo/w1200_h630_c17/1mm/histoire-zara-fast-fashion-mode.jpg",
-      "https://cdn.mos.cms.futurecdn.net/4HTRrzjb6FVy9gagXeXH9P.jpg",
-      "https://static.zara.net/photos///contents/mkt/spots/ss23-north-man-new/subhome-xmedia-19-2//w/1366/IMAGE-landscape-fill-7c8c1a5b-ce41-46df-94ea-8f45d2bd772f-default_0.jpg?ts=1683800443276",
+      "https://static.zara.net/photos///contents/mkt/spots/ss23-north-woman-new/subhome-xmedia-21//w/1920/IMAGE-landscape-fill-8d9e274f-93da-4343-af1d-1e546f4d902f-default_0.jpg?ts=1684940939176",
+      "https://static.zara.net/photos///contents/mkt/spots/ss23-north-woman-collection/subhome-xmedia-21-2//w/1920/IMAGE-landscape-fill-b9592208-cde2-4805-a60e-e9ba66b6c01e-default_0.jpg?ts=1684941302182",
+      "https://static.zara.net/photos///contents/mkt/spots/ss23-north-woman-jeans/subhome-xmedia-21-2//w/1920/IMAGE-landscape-fill-c72baacb-0d13-4e4e-b2d0-83bfe8ae84a7-default_0.jpg?ts=1684941605187",
+      "https://static.zara.net/photos///contents/mkt/spots/ss23-north-woman-accesories/subhome-xmedia-21-2//w/1920/IMAGE-landscape-fill-79ca3793-4421-43d7-9450-87a544a3465c-default_0.jpg?ts=1684941996804",
+      "https://static.zara.net/photos///contents/mkt/spots/ss23-north-woman-join-life/subhome-xmedia-11//w/1920/IMAGE-landscape-default-fill-53c67ecf-62ae-4087-a1a7-2c575c06c8f2-default_0.jpg?ts=1679057887005",
     ];
 
     const activeIndex = ref(0);
@@ -46,10 +48,32 @@ export default {
 </script>
 
 <style scoped>
-.slideshow-container {
-  
-  width: 100vw;
-  height: 100vh;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+}
+
+.fullscreen-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fullscreen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
