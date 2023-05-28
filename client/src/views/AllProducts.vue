@@ -20,7 +20,7 @@
           <tr v-for="product in products" :key="product.productid">
             <td>{{ product.productid }}</td>
             <td>{{ product.productname }}</td>
-            <td>{{ product.productprice }}</td>
+            <td>{{ product.productprice }} TND</td>
             <td>{{ product.productquantity }}</td>
             <td>{{ product.productcolor }}</td>
             <td>{{ product.productcategory }}</td>
